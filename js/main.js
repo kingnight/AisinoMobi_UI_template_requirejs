@@ -10,9 +10,11 @@ require.config({
             exports: "jQuery"
         },
         kendo: {
-            exports: "kendo"
+        	deps: ['jQuery'],
+          exports: "kendo"
         }
-    }
+    },
+    exclude: ['kendo'],
 });
 
 require(["jQuery", "app"], function($, application) {
