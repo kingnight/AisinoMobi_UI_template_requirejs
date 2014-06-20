@@ -22,9 +22,11 @@ module.exports = function (grunt) {
 	  	}, 
       all: ['js/*.js']
     },
-    htmlmin: {                                     // Task
-	    dist: {                                      // Target
-	      options: {                                 // Target options
+    htmlmin: {                                     
+	    dist: {                                      
+	      options: {  
+	      	minifyJS:true,
+	        minifyCSS:true,	                               
 	        removeComments: true,
 	        collapseWhitespace: true
 	      },
@@ -44,6 +46,11 @@ module.exports = function (grunt) {
 		      {expand: true, src: ['images/**',], dest: 'built/', filter: 'isFile'}
 		    ]
 		  }
+		},
+		clean: {
+		  build: {
+		    src: ["built"]
+		  }
 		}
   });
 
@@ -55,9 +62,11 @@ module.exports = function (grunt) {
   
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  
   grunt.registerTask('check', ['jshint']);
   
-  grunt.registerTask('default', ['jshint','requirejs', 'htmlmin', 'copy']);
+  grunt.registerTask('default', ['jshint','requirejs', "htmlmin",'copy']);
   
   
 }
