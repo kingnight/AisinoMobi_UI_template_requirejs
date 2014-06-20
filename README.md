@@ -3,8 +3,11 @@
 **目录结构及推荐存放资源位置如下：**
 
 index.html :页面主文件，包含UI页面和模版</br>
+
 libs:库文件</br>
+
 css/custom.css: 如果需要定制个性化UI style，在此文件中添加样式</br>
+
 images：图片资源文件
 
 
