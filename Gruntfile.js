@@ -40,11 +40,15 @@ module.exports = function (grunt) {
 		    files: [
 		      // includes files within path
 		      {expand: true, src: ['libs/**',], dest: 'built/', filter: 'isFile'},
-		      
-		      {expand: true, src: ['css/*',], dest: 'built/', filter: 'isFile'},
-		      
 		      {expand: true, src: ['images/**',], dest: 'built/', filter: 'isFile'}
 		    ]
+		  }
+		},
+		cssmin: {
+		  combine: {
+		    files: {
+		      'built/css/custom.css': ['css/custom.css']
+		    }
 		  }
 		},
 		clean: {
@@ -64,9 +68,11 @@ module.exports = function (grunt) {
   
   grunt.loadNpmTasks('grunt-contrib-clean');
   
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  
   grunt.registerTask('check', ['jshint']);
   
-  grunt.registerTask('default', ['jshint','requirejs', "htmlmin",'copy']);
+  grunt.registerTask('default', ['jshint','requirejs', 'htmlmin','cssmin','copy']);
   
   
 }
